@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;600;700&family=Space+Grotesk:wght@500&display=swap');
+
+/*     font-family: 'Libre Franklin', sans-serif;
+       font-family: 'Space Grotesk', sans-serif;
+*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+
+#bg-gradient {
+    position: absolute;
+    width: 32.5rem;
+    height: 100vh;
+    /* background-image: linear-gradient(to right, hsl(249, 99%, 64%), hsl(278, 94%, 30%)); */
+    background: rgb(61,4,49);
+    background: linear-gradient(117deg, rgba(61,4,49,1) 0%, rgba(97,12,62,1) 36%, rgba(68,35,102,1) 64%, rgba(61,4,49,1) 100%);
+}
+
+#card-flex-container {
+    display: flex;
+    flex-direction: column;
+    width:fit-content;
+    height: 100vh;
+    margin-left: 17rem;
+    justify-content: center;
+    border: 1px solid red;
+}
+
+
+.card {
+    box-shadow: 1rem 1rem 1rem -1rem black;
+    
+}
+
+#card-front {
+    position: relative;
+    width: calc(100% - 3rem);
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+#card-front-img {
+    width: 20rem;
+}
+
+#card-logo {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    right: 0;
+    width: 4.5rem;
+}
+
+#card-front-number {
+    width: fit-content;
+    position: absolute;
+    bottom: 3.5rem;
+    color: white;
+    font-weight: 100;
+    font-size: 1.4rem;
+    text-align: center;
+    left: 1rem;
+    right: 1rem;
+
+}
+
+#card-front-name {
+    position: absolute;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 100;
+    bottom: 1rem;
+    left: 1rem;
+}
+
+#card-front-exp-date {
+    position: absolute;
+    color:white;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 0.8rem;
+    font-weight: 100;
+}
+
+#card-back-img {
+    width: 20rem;
+    margin-top: 1.6rem;
+    margin-left: 3rem;
+}
