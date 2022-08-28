@@ -151,7 +151,6 @@ body {
     border-radius: 0.5rem;
     height: 3rem;
     padding-left: 0.5rem;
-    margin-bottom: 1rem;
     outline: none;
 }
 
@@ -167,6 +166,12 @@ body {
 #card-holder-name-input {
     width: 25rem;
     transition: width 300ms;;
+}
+
+.invalid {
+    color: red;
+    font-size: 0.7rem;
+    margin: 0.2rem 0 0.5rem 0;
 }
 
 #card-number-input {

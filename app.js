@@ -15,7 +15,12 @@ let formContainer = document.querySelector("#form-container");
 let submitPageContainer = document.querySelector("#submit-page-container");
 
 let submitContinueButton = document.querySelector("#submit-continue-btn");
-let submitValid = false;
+let cardNameValid = false;
+let cardNumValid = false;
+let cardExpMonthValid = false;
+let cardExpYearValid = false;
+let cardCvcValid = false;
+let invalidMsgArr = document.querySelectorAll(".invalid");
 
 
 nameInput.addEventListener("keyup", () => {
@@ -61,35 +66,77 @@ cardCvcInput.addEventListener("keyup", (e) => {
 
 function SubmitPage() {
 
-    let cardNameIsLetters =  /^[A-Za-z]+$/.test(nameInput.value);
+    let cardNameIsLetters =  /^[a-zA-Z\s]*$/.test(nameInput.value);
+    let cardNameIsSpacesOnly = /^\s*$/.test(nameInput.value);
 
-    if(cardNameIsLetters) {
-        console.log("cardName is letters")
+    if(cardNameIsLetters && !cardNameIsSpacesOnly) {
+        invalidMsgArr[0].style.visibility = "hidden";
+        cardNameValid = true;
     } 
     else {
-        console.log("cardName is not just letters");
+        invalidMsgArr[0].style.visibility = "visible";
+        cardNameValid = false;
     }
 
     
     let cardNumberIsNum = /^\d+$/.test(cardNumberInput.value);
 
     if(cardNumberIsNum) {
-        console.log("cardNum is a number");
+        invalidMsgArr[1].style.visibility = "hidden";
+        cardNumValid = true;
     } else {
-        console.log("cardNum not a number");
+        invalidMsgArr[1].style.visibility = "visible";
+        cardNumValid = false;
     }
 
+    let cardExpMonthIsNum = /^\d+$/.test(cardExpMonthInput.value);
 
+    if(cardExpMonthIsNum  && cardExpMonthInput.value >= 0 && cardExpMonthInput.value <= 12) {
+        cardExpMonthValid = true;
+    } else {
+        cardExpMonthValid = false;
+        
+    }
 
+    let cardExpYearIsNum = /^\d+$/.test(cardExpYearInput.value);
 
+    if(cardExpYearIsNum && cardExpYearInput.value >= 0) {
+        cardExpYearValid = true;
+    } else {
+        cardExpYearValid = false;
+    }
 
-    if(submitValid) {
+    let cardCvcIsNum = /^\d+$/.test(cardCvcInput.value);
+
+    if(cardCvcIsNum) {
+        cardCvcValid = true;
+    } else {
+        cardCvcValid = false;
+    }
+
+    //actually apply styles now because exp month, year, and cvc share same style element
+    if(cardCvcValid && cardExpMonthValid && cardExpYearValid) {
+        invalidMsgArr[2].style.visibility = "hidden";
+    } else {
+        invalidMsgArr[2].style.visibility = "visible";
+    }
+    
+
+    if(cardNameValid && cardNumValid && cardExpMonthValid && cardExpYearValid && cardCvcValid) {
         formContainer.style.visibility = "hidden";
         submitPageContainer.style.visibility = "visible";
-    }
-    else {
-        return false;
-    }
+
+        cardNameValid = false;
+        cardNumValid = false;
+        cardExpMonthValid = false;
+        cardExpYearValid = false;
+        cardCvcValid = false;
+    } 
+       
+    return false;
+    
+    
+   
 }
 
 submitContinueButton.addEventListener("click", () => {

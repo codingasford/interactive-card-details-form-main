@@ -30,21 +30,23 @@
     <div id="form-container">
         <form action="" id="card-details-form" onsubmit="return SubmitPage();">
             <label for="card-holder-name-input" class="form-label">CARDHOLDER NAME</label>
-            <input type="text" placeholder="e.g. Jane Appleseed"  class="form-input" id="card-holder-name-input" maxlength="35" tabindex="0">
-
+            <input type="text" placeholder="e.g. Jane Appleseed"  class="form-input" id="card-holder-name-input" maxlength="25" tabindex="0">
+            <div class="invalid" id="name-invalid"  style="visibility: hidden;">Wrong format, letters only</div>
             <label for="card-number-input" class="form-label">Card Number</label>
-            <input type="text" placeholder="e.g. 1234 5678 9123 0000" class="form-input" id="card-number-input" maxlength="16"  tabindex="1">
+            <input type="text" placeholder="e.g. 1234 5678 9123 0000" class="form-input" id="card-number-input" minlength="16" maxlength="16"  tabindex="1">
+            <div class="invalid" id="number-invalid" style="visibility: hidden;">Wrong format, numbers only</div>
             <div id="form-custom-flex">
                 <div id="exp-form-flex-section">
                     <label for="card-exp-month-input" class="form-label" id="exp-label">Exp. Date (MM/YY)</label>
-                    <input type="text" placeholder="MM" class="form-input" id="card-exp-month-input" maxlength="2" max="12" tabindex="2">
-                    <input type="text" placeholder="YY" class="form-input" id="card-exp-year-input" maxlength="2" max="99"  tabindex="3">
+                    <input type="text" placeholder="MM" class="form-input" id="card-exp-month-input" minlength="2" maxlength="2" tabindex="2">
+                    <input type="text" placeholder="YY" class="form-input" id="card-exp-year-input" minlength="2" maxlength="2" tabindex="3">
                 </div>
                 <div id="cvc-form-flex-section">
                     <label for="card-cvc-input" class="form-label" id="cvc-label">CVC</label>
-                    <input type="text" placeholder="e.g. 123" class="form-input" id="card-cvc-input" maxlength="3" tabindex="4">   
+                    <input type="text" placeholder="e.g. 123" class="form-input" id="card-cvc-input" minlength="3" maxlength="3" tabindex="4">   
                 </div>
             </div>
+            <div class="invalid" id="exp-date-invalid" style="visibility: hidden;">Wrong format, valid numbers only</div>
             <button type="submit" id="confirm-btn" tabindex="5">Confirm</button>
         </form>
     </div>
